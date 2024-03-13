@@ -17,7 +17,8 @@ jobs:
            python-version: 3.11
       - name: Install requirements
         run: |
-            poetry install
+            cd devops_demo
+            pip install -r requirements.txt
       - name: Run tests
         run: |
             cd devops_demo
