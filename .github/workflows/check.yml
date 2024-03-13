@@ -10,11 +10,8 @@ jobs:
     steps:
       - name: Checkout repo code
         uses: actions/checkout@v3
-
-          #      - name: Run test
-          # run: |
-          #cd /home/runner/work/devops-demo-service/devops_demo && python3 manage.py test
-          #          
+      - name: Pytest run
+      - run: pytest
       - name: Build and run container
         run: |
           docker-compose up -d --build
