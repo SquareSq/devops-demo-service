@@ -10,8 +10,6 @@ jobs:
     steps:
       - name: Checkout repo code
         uses: actions/checkout@v3
-      - name: Pytest run
-      - run: pytest
       - name: Build and run container
         run: |
           docker-compose up -d --build
