@@ -63,5 +63,6 @@ jobs:
       - name: Build container image
         run: |
           docker build \
-          -t your-username/your-image-name:${GITHUB_SHA::7} \
-          -t your-username/your-image-name:latest \
+          -t SquareSq/test_container:${GITHUB_SHA::7} \
+          -t SquareSq/test_container:latest \
+          .
