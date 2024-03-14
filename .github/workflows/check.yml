@@ -80,12 +80,10 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: squaresq/test_image
-          tags: |
-            type=raw,value=latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
-          tags: squaresq/test_image:latest
+          tags: ${{ steps.meta.outputs.tags }}
