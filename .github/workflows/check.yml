@@ -87,3 +87,5 @@ jobs:
           context: .
           push: true
           tags: ${{ steps.meta.outputs.tags }}
+          #tags: squaresq/test_image:latest
+
