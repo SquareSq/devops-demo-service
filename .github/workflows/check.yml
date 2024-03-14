@@ -86,4 +86,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: squaresq/test_image:latest
+          tags: squaresq/test_image:${{ steps.meta.outputs.context.runNumber }}
