@@ -41,9 +41,6 @@ jobs:
       - name: Install requirements
         run: |
           pip install -r requirements.txt
-      - name: Runserver
-        run: |
-          python3 devops_demo/manage.py runserver
       - name: Run Tests
         env:
           DEBUG: "0"
@@ -55,3 +52,10 @@ jobs:
           DB_PORT: ${{ env.POSTGRES_PORT }}
         run: |
           python3 devops_demo/manage.py test
+      - name: Build Container Image
+        needs: [Run Tests]
+        run: |
+          docker build \
+          -t your-username/your-image-name:${GITHUB_SHA::7} \
+          -t your-username/your-image-name:latest \
+
