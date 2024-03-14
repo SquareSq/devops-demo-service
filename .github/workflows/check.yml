@@ -40,7 +40,7 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Install requirements
         run: |
-          cd devops_demo/devops_demo/
+          cd
           pip install -r requirements.txt
       - name: Run Tests
         env:
