@@ -1,3 +1,4 @@
+---
 name: Checks
 
 on:
@@ -13,7 +14,7 @@ jobs:
       POSTGRES_HOST: localhost
       POSTGRES_DB: postgres
       POSTGRES_PORT: 5432
-      DJANGO_SECRET_KEY: "django-insecure-hsm97u4bzcmgdw1g%w248#%v1fv^4zkr(u(4s(jo^25%cr*1q2"
+      DJANGO_SECRET_KEY: "django-insecure-hsm97u4bzcmgdw1g%w248#%v1fv^4zkr(u(4s(jo^25%cr*1q2"  #Так делать нельзя
     services:
       postgres_main:
         image: postgres:12.0-alpine
@@ -66,3 +67,15 @@ jobs:
           -t squaresq/test_container:${GITHUB_SHA::7} \
           -t squaresq/test_container:latest \
           .
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          push: true
+          tags: squaresq/test_image:latest
