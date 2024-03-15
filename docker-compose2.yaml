@@ -7,19 +7,10 @@ services:
     command: bash -c "python3 manage.py makemigrations
       && python3 manage.py migrate
       && python3 manage.py runserver 0.0.0.0:8000"
-    expose:
-      - 8000
+    ports:
+      - "8000:8000"
     environment:
       - DB_HOST=db
-
-  nginx:
-    image: nginx:latest
-    depends_on:
-      - web
-    ports:
-      - "7575:80"
-    volumes:
-      - ./nginx:/etc/nginx/conf.d
 
   db:
     image: postgres:12.0-alpine
